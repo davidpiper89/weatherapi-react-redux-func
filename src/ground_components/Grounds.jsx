@@ -10,27 +10,38 @@ const Grounds = () => {
 
 
   const getApiData = async (lat, long) => {
-    const { data } = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=40ce40e3254302084831efa372ed8341`);
-
-    setState(data);
+    const { data } = await axios.get(
+      `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=40ce40e3254302084831efa372ed8341`
+    );
+   
+    setState(data);    
+   
+    
   };
 
   const onClickSyd = () => {
     getApiData(-33.891525, 151.224121);
   };
 
-  return (
-      <>
-      <button onClick={onClickSyd}>Sydney</button>
-      {!state ? <p>Select Ground</p> :
-      <div id="myweather">
-        <Time state={state}/>
-        <Temp state={state}/>
-        <Icon state={state}/>
-        <Description state={state}/>
-      </div>}
-      </>
+  const onClickAde = () => {
+    getApiData(-34.9156, 138.5953);
+  };
 
+  return (
+    <>
+      <button onClick={onClickSyd}>Sydney</button>
+      <button onClick={onClickAde}>Ade</button>
+      {!state ? (
+        <p>Select Ground</p>
+      ) : (
+        <div id="myweather">
+          <Time state={state} />
+          <Temp state={state} />
+          <Icon state={state} />
+          <Description state={state} />
+        </div>
+      )}
+    </>
   );
 };
 

@@ -1,7 +1,8 @@
 import React from "react";
 
-function Description() {
-  // return <p> Description : {props.weather.weather[0].description} </p>;
+function Description(props) {
+  console.log(props);
+  return <p> Description : {props.state.weather[0].description} </p>;
 }
 
 export default Description;
